@@ -45,15 +45,14 @@ def findUnlicensedDevices():
     unlicensedDevices = {}
 
     for device in devices:
-        if device["licenseExpirationDate"] == None:
-            if "MR" in device["model"]:
-                unlicensedDevices[device["serial"]] = mr_level
-            elif "MX" in device["model"]:
-                unlicensedDevices[device["serial"]] = (f"{device['model']}-{mx_level}")
-            elif "MS390" in device["model"]:
-                unlicensedDevices[device["serial"]] = (f"{device['model']}-{ms_390_level}")
-            else:
-                unlicensedDevices[device["serial"]] = device["model"]
+        if "MR" in device["model"]:
+            unlicensedDevices[device["serial"]] = mr_level
+        elif "MX" in device["model"]:
+            unlicensedDevices[device["serial"]] = (f"{device['model']}-{mx_level}")
+        elif "MS390" in device["model"]:
+            unlicensedDevices[device["serial"]] = (f"{device['model']}-{ms_390_level}")
+        else:
+            unlicensedDevices[device["serial"]] = device["model"]
 
     return unlicensedDevices
 
